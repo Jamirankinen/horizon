@@ -14,15 +14,20 @@
     <h3 class="variant-family-heading">Valitse malli:</h3>
 
     <div class="variant-family" role="group" aria-label="Choose model">
-      {% assign current_first = family_products | where: "id", current_product.id | first %}
-      <a href="{{ current_first.url }}"
-         class="variant-family__item active"
-         aria-current="true"
-         title="{{ current_first.title }}">
+      {% assign current_first = family_products | where: 'id', current_product.id | first %}
+      <a
+        href="{{ current_first.url }}"
+        class="variant-family__item active"
+        aria-current="true"
+        title="{{ current_first.title }}"
+      >
         {% if current_first.featured_image %}
-          <img src="{{ current_first.featured_image | img_url: '100x100' }}"
-               alt="{{ current_first.title }}"
-               width="50" height="50">
+          <img
+            src="{{ current_first.featured_image | img_url: '100x100' }}"
+            alt="{{ current_first.title }}"
+            width="50"
+            height="50"
+          >
         {% else %}
           <span class="variant-swatch" aria-label="{{ current_first.title }}"></span>
         {% endif %}
@@ -30,21 +35,25 @@
 
       {% for family_product in family_products %}
         {% unless family_product.id == current_product.id %}
-          <a href="{{ family_product.url }}"
-             class="variant-family__item"
-             aria-current="false"
-             title="{{ family_product.title }}">
+          <a
+            href="{{ family_product.url }}"
+            class="variant-family__item"
+            aria-current="false"
+            title="{{ family_product.title }}"
+          >
             {% if family_product.featured_image %}
-              <img src="{{ family_product.featured_image | img_url: '100x100' }}"
-                   alt="{{ family_product.title }}"
-                   width="50" height="50">
+              <img
+                src="{{ family_product.featured_image | img_url: '100x100' }}"
+                alt="{{ family_product.title }}"
+                width="50"
+                height="50"
+              >
             {% else %}
               <span class="variant-swatch" aria-label="{{ family_product.title }}"></span>
             {% endif %}
           </a>
         {% endunless %}
       {% endfor %}
-
     </div>
   </div>
 
@@ -58,11 +67,11 @@
     }
 
     .variant-family-heading {
-      font-size: 0.875rem; /* approx 14px */
+      font-size: 0.875rem;
       font-weight: 500;
       line-height: 1.4;
-      color: #6b6b6b; /* a medium-grey tone */
-      margin: 0 0 6px 0; /* small gap below heading */
+      color: #6b6b6b;
+      margin: 0 0 6px 0;
       padding: 0;
       letter-spacing: 0.05em;
     }
@@ -132,5 +141,4 @@
       }
     }
   </style>
-
 {% endif %}
